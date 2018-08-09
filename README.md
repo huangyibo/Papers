@@ -19,4 +19,5 @@
 * Dlib http://dlib.net/   安装Dlib之前首先应该编译Boost
 * TensorFlow  https://www.tensorflow.org/
 * igraph http://igraph.org/
-
+* libpqxx https://github.com/jtv/libpqxx
+* json-c https://github.com/json-c/json-c
