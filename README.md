@@ -21,3 +21,12 @@
 * igraph http://igraph.org/
 * libpqxx https://github.com/jtv/libpqxx
 * json-c https://github.com/json-c/json-c
+
+
+## **使用的技术**
+
+* RDMA Remote Direct Memory Access  远程内存直接访问
+* Machine Learning 机器学习
+    * 监督学习
+    * 非监督学习
+* 库
