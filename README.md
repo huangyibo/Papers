@@ -30,3 +30,5 @@
     * 监督学习
     * 非监督学习
 * 库
+* graph theory
+* storage techniques
