@@ -32,4 +32,7 @@
 * 库
 * graph theory
 * storage techniques
-* user-defined system call
+* Linux System Programming
+    * system call
+    * libc
+    * C Compile
