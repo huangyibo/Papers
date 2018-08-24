@@ -4,11 +4,11 @@
 #include <stdio.h>  //It includes perror(const char *str)
 #include <unistd.h>   //It includes read(int fd, void* buf, size_t len)
 #include <errno.h>
-#define BUFFER_SIZE 7
+#define BUFFER_SIZE 4096
 
 int main (int argc,char *argv[]){
   int fd;   // It is the File Description which is used int the Linux System.
-  fd = open("/home/os/Papers/Technical Documents/OS/linux_system_programming/code/test",O_RDONLY);
+  fd = open("/home/os/Papers/Technical Documents/OS/linux_system_programming/code/testRead.c",O_RDONLY);
   if (fd == -1){
     perror("main");
   }else{
@@ -19,7 +19,7 @@ int main (int argc,char *argv[]){
 
   char buf[BUFFER_SIZE];
   size_t len = 100;
-  while (len != 0 && (ret = (read(fd,&buf,BUFFER_SIZE)) != 0)){
+  while (len != 0 && (ret = (read(fd,&buf,BUFFER_SIZE))) != 0){
     if (ret == -1){
        if (errno == EINTR)   //It means interupts
            continue;
@@ -29,11 +29,11 @@ int main (int argc,char *argv[]){
 //    len -= ret; 
 //    buf += ret; 
     for (int i = 0 ; i < BUFFER_SIZE; i++){
-      printf("buf[%d]:%c\n",i,buf[i]);
+      printf("%c",buf[i]);
     }
   }
   return 0;
 }
 
-
 // http://www.techytalk.info/linux-system-programming-open-file-read-file-and-write-file/
+
