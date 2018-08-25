@@ -34,5 +34,5 @@
 * storage techniques
 * Linux System Programming
     * system call
-    * libc
+    * glibc
     * C Compile
