@@ -9,14 +9,14 @@
 
 int main (int argc,char *argv[]){
   int fd;   // It is the File Description which is used int the Linux System.
-  fd = open("/home/os/Papers/Technical Documents/OS/linux_system_programming/code/file/testRead.c",O_RDONLY);
+  fd = open("/home/os/Papers/Technical-Documents/OS/linux_system_programming/code/file/testRead.c",O_RDONLY);
   if (fd == -1){
     perror("main");
   }else{
     printf("Success!\n");
   }
 
-  size_t ret;
+  ssize_t ret;   // signed size_t, the negative numbers mean error
 
   char buf[BUFFER_SIZE];   //It means the buffer for the reading operating.
   memset(&buf,0,BUFFER_SIZE);  //It means the initial value for every value in the buffer
