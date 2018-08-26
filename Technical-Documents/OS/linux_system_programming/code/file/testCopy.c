@@ -42,7 +42,11 @@ int main (int argc, char *argv[]){
   }
   int ret = fdatasync(fd_output);
   printf("sync:%d\n",ret);
-  close(fd_output);   //The fd_output is closed that is input file desctiptor. It is the second for the open sort.
-  close(fd_input);
+  if (close(fd_output) == -1){   //The fd_output is closed that is input file desctiptor. It is the second for the open sort.
+    perror("fd_outpt:");
+  }  
+  if (close(fd_input)  == -1){
+    perror("fd_input:");
+  }
   return 0;
 }
