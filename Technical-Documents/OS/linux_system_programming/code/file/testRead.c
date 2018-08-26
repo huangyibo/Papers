@@ -33,7 +33,10 @@ int main (int argc,char *argv[]){
       printf("%c",buf[i]);
     }
   }
-  close(fd);
+  int ret_close = close(fd);
+  if (ret_close == -1){
+    perror("close:");
+  }
   return 0;
 }
 
