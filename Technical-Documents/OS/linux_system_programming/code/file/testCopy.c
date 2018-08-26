@@ -13,11 +13,11 @@ int main (int argc, char *argv[]){
     perror("input:");
   }
 
-  ssize_t fd_output = open("/home/os/Papers/Technical-Documents/OS/linux_system_programming/code/file/output",O_RDWR | O_APPEND);
+  ssize_t fd_output = open("/home/os/Papers/Technical-Documents/OS/linux_system_programming/code/file/output",O_WRONLY | O_APPEND);
   if (fd_output  == -1){
     perror("output:");
   } 
-
+  
   char buffer[BUFFER_SIZE];
   memset(&buffer,0,BUFFER_SIZE);
  
@@ -40,7 +40,8 @@ int main (int argc, char *argv[]){
       break;
     }
   }
-
+  int ret = fdatasync(fd_output);
+  printf("sync:%d\n",ret);
   close(fd_output);   //The fd_output is closed that is input file desctiptor. It is the second for the open sort.
   close(fd_input);
   return 0;
