@@ -5,11 +5,12 @@
 #include <unistd.h>   //It includes read(int fd, void* buf, size_t len)
 #include <errno.h>
 #include <string.h>  //It includes memset(void *str, int value, size_t __n)
-#define BUFFER_SIZE 4096
-
+#define BUFFER_SIZE 4096*2
+// #define BUFFER_SIZE 20   // extreme case. The buffer size is common 4096 * n 
 int main (int argc,char *argv[]){
   int fd;   // It is the File Description which is used int the Linux System.
-  fd = open("/home/os/Papers/Technical-Documents/OS/linux_system_programming/code/file/testRead.c",O_RDONLY);
+  fd = open("/home/os/Papers/Technical-Documents/OS/linux_system_programming/code/file/testRead.c",O_RDONLY);   //example 1: reading the testRead.c file
+  //fd = open("/home/os/Papers/Technical-Documents/OS/linux_system_programming/code/file/input",O_RDONLY);   //example 2: reading the input file
   if (fd == -1){
     perror("main");
   }else{
@@ -17,18 +18,17 @@ int main (int argc,char *argv[]){
   }
 
   ssize_t ret;   // signed size_t, the negative numbers mean error
-
   char buf[BUFFER_SIZE];   //It means the buffer for the reading operating.
   memset(&buf,0,BUFFER_SIZE);  //It means the initial value for every value in the buffer
-
+  
   while ((ret = (read(fd,&buf,BUFFER_SIZE))) != 0){
     if (ret == -1){
-       if (errno == EINTR)   //It means interupts
+       if (errno == EINTR)   //It means the program encounts interupts, for software interupts and so on.
            continue;
        perror("main");
        break;
     }
-    for (int i = 0 ; i < BUFFER_SIZE; i++){
+    for (size_t i = 0 ; i < BUFFER_SIZE; i++){
       printf("%c",buf[i]);
     }
   }
