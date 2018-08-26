@@ -40,5 +40,8 @@ int main (int argc, char *argv[]){
       break;
     }
   }
+
+  close(fd_output);   //The fd_output is closed that is input file desctiptor. It is the second for the open sort.
+  close(fd_input);
   return 0;
 }

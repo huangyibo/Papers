@@ -32,6 +32,7 @@ int main (int argc,char *argv[]){
       printf("%c",buf[i]);
     }
   }
+  close(fd);
   return 0;
 }
 
