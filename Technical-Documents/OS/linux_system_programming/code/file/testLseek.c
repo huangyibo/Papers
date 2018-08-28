@@ -12,7 +12,7 @@ int main(int argc, char *argv[]){
   if (fd_input == -1){
     perror("open:");
   }
-  int ret_lseek = lseek(fd_input, (off_t) 9, SEEK_END);
+  int ret_lseek = lseek(fd_input, (off_t) 9, SEEK_END);  //The lseek() function adjusts the read pointer position.
   if (ret_lseek == (off_t) -1){
     perror("lseek:");
   }
