@@ -1,3 +1,4 @@
+# It is used the comand "dumpe2fs /dev/sda1" to get below information.
 Filesystem volume name:   <none>
 Last mounted on:          /
 Filesystem UUID:          b1f56b77-7110-462a-9353-f4b64f3d2a5a
