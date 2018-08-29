@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <errno.h>
-#define BUFFER_SIZE 4096
+#define BUFFER_SIZE 10
 
 int main(int argc, char *argv[]){
   int fd_input;
@@ -12,14 +12,12 @@ int main(int argc, char *argv[]){
   if (fd_input == -1){
     perror("open:");
   }
-  // int ret_lseek = lseek(fd_input, (off_t) 9, SEEK_END);
-  int ret_lseek = lseek(fd_input, (off_t) 9, SEEK_CUR);  //The lseek() function adjusts the read pointer position.
-  if (ret_lseek == (off_t) -1){
-    perror("lseek:");
-  }
+  
   ssize_t ret_input;
   char buffer[BUFFER_SIZE];
-  while ((ret_input = read(fd_input,&buffer,BUFFER_SIZE))!=0){
+  
+  ssize_t count =  0 ;
+  while ((ret_input = pread(fd_input,&buffer,BUFFER_SIZE,10))!=0){
     if(ret_input == -1){
        if (errno = EINTR){
          continue;
@@ -29,6 +27,11 @@ int main(int argc, char *argv[]){
     }
     for (size_t i = 0; i < ret_input; i++){
        printf("%c",buffer[i]);
+    }
+    printf("\n");
+    count++;
+    if (count == 3){
+       break; 
     }
   }
   return 0;
