@@ -22,9 +22,7 @@ int main (int argc,char *argv[]){
        perror("main");
        break;
     }
-    for (size_t i = 0 ; i < BUFFER_SIZE; i++){
-      printf("%c",buf[i]);
-    }
+    write(STDOUT_FILENO,&buf,ret);  //#define STDOUT_FILENO 1. It is the standard output file description.
     count++;
   }
   return 0;
