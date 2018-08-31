@@ -29,13 +29,14 @@ int main (int argc, char *argv[]){
  
   ssize_t ret_read;
   ssize_t ret_write;
+  fd_set readfds;
+  fd_set writefds;
   while (1){  
-	  fd_set readfds;
 	  FD_ZERO(&readfds);
 	  FD_SET(STDIN_FILENO, &readfds);
 	  FD_SET(fd_input, &readfds);
-	  fd_set writefds;
-	  FD_ZERO(&writefds);
+	  
+          FD_ZERO(&writefds);
 	  FD_SET(STDOUT_FILENO,&writefds);
 	  FD_SET(fd_output, &writefds);
 	  
@@ -48,7 +49,7 @@ int main (int argc, char *argv[]){
 	  if (FD_ISSET(STDIN_FILENO, &readfds)){
 	    ssize_t std_ret = read(STDIN_FILENO,&buffer,BUFFER_SIZE);  //stdin blocks the following reading and writing operating. The default STDIN_FILENO is 0
 	    if (FD_ISSET(STDOUT_FILENO, &writefds)){
-	      write(STDOUT_FILENO,&buffer,BUFFER_SIZE);    // Writing from stdin to stdout
+	      write(STDOUT_FILENO,&buffer, std_ret);    // Writing from stdin to stdout
 	    } 
 	  }
 	  
