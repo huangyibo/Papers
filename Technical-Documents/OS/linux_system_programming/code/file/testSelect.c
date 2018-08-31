@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <errno.h>
+#include <stdbool.h>
 #define BUFFER_SIZE 4096
 int main (int argc, char *argv[]){
   
@@ -31,7 +32,8 @@ int main (int argc, char *argv[]){
   ssize_t ret_write;
   fd_set readfds;
   fd_set writefds;
-  while (1){  
+  bool std_end_flag = true;
+  while (std_end_flag){  
 	  FD_ZERO(&readfds);
 	  FD_SET(STDIN_FILENO, &readfds);
 	  FD_SET(fd_input, &readfds);
@@ -50,6 +52,7 @@ int main (int argc, char *argv[]){
 	    ssize_t std_ret = read(STDIN_FILENO,&buffer,BUFFER_SIZE);  //stdin blocks the following reading and writing operating. The default STDIN_FILENO is 0
 	    if (FD_ISSET(STDOUT_FILENO, &writefds)){
 	      write(STDOUT_FILENO,&buffer, std_ret);    // Writing from stdin to stdout
+              std_end_flag = false;
 	    } 
 	  }
 	  
