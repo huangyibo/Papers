@@ -8,7 +8,7 @@
 
 int main(int argc, char *argv[]){
   int fd_input;
-  fd_input = open("/home/os/Papers/Technical-Documents/OS/linux_system_programming/code/file/testRead.c",O_RDONLY);
+  fd_input = open("/home/os/Papers/Technical-Documents/OS/Linux_System_Programming/code/file/testRead.c",O_RDONLY);
   if (fd_input == -1){
     perror("open:");
   }

@@ -9,9 +9,9 @@
 // #define BUFFER_SIZE 20   // extreme case. The buffer size is common 4096 * n 
 int main (int argc,char *argv[]){
   int fd;   // It is the File Description which is used int the Linux System.
-  //fd = open("/home/os/Papers/Technical-Documents/OS/linux_system_programming/code/file/testRead.c",O_RDONLY);   //example 1: reading the testRead.c file
-  //fd = open("/home/os/Papers/Technical-Documents/OS/linux_system_programming/code/file/input_not_null",O_RDONLY);   //example 2: reading the input file
-  fd = open("/home/os/Papers/Technical-Documents/OS/linux_system_programming/code/file/input_not_null",O_RDWR);   //example 3: reading the null input file
+  //fd = open("/home/os/Papers/Technical-Documents/OS/Linux_System_Programming/code/file/testRead.c",O_RDONLY);   //example 1: reading the testRead.c file
+  //fd = open("/home/os/Papers/Technical-Documents/OS/Linux_System_Programming/code/file/input_not_null",O_RDONLY);   //example 2: reading the input file
+  fd = open("/home/os/Papers/Technical-Documents/OS/Linux_System_Programming/code/file/input_not_null",O_RDWR);   //example 3: reading the null input file
   if (fd == -1){
     perror("main");
   }else{

@@ -8,12 +8,12 @@
 #define BUFFER_SIZE 4096
 int main (int argc, char *argv[]){
   
-  ssize_t fd_input = open("/home/os/Papers/Technical-Documents/OS/linux_system_programming/code/file/testRead.c",O_RDONLY);
+  ssize_t fd_input = open("/home/os/Papers/Technical-Documents/OS/Linux_System_Programming/code/file/testRead.c",O_RDONLY);
   if (fd_input == -1){
     perror("input:");
   }
 
-  ssize_t fd_output = open("/home/os/Papers/Technical-Documents/OS/linux_system_programming/code/file/output",O_WRONLY | O_APPEND);
+  ssize_t fd_output = open("/home/os/Papers/Technical-Documents/OS/Linux_System_Programming/code/file/output",O_WRONLY | O_APPEND);
   if (fd_output  == -1){
     perror("output:");
   } 
