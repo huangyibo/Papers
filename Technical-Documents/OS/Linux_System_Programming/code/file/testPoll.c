@@ -49,15 +49,15 @@ int main (int argc, char *argv[]){
 	    perror("poll:");
 	    return 1;
 	  }
-	  if (fds[0].revents && POLLIN){
+	  if (fds[0].revents & POLLIN){
 	    ssize_t std_ret = read(STDIN_FILENO,&buffer,BUFFER_SIZE);  //stdin blocks the following reading and writing operating. The default STDIN_FILENO is 0
-	    if (fds[2].revents && POLLOUT){
+	    if (fds[2].revents & POLLOUT){
 	      write(STDOUT_FILENO,&buffer, std_ret);    // Writing from stdin to stdout
               std_end_flag = false;
 	    } 
 	  }
 	  
-	  if (fds[1].revents && POLLIN){
+	  if (fds[1].revents & POLLIN){
 	    while((ret_read = read(fd_input,&buffer,BUFFER_SIZE)) != 0){
 	      if(ret_read == -1){
 		if (errno  == EINTR){
@@ -66,7 +66,7 @@ int main (int argc, char *argv[]){
 		perror("read:");
 		break;
 	      }
-	      if (fds[3].revents && POLLOUT){
+	      if (fds[3].revents & POLLOUT){
 		ret_write = write(fd_output,&buffer,(ssize_t)ret_read);
 		if (ret_write == -1){
 		  if(errno == EINTR){
