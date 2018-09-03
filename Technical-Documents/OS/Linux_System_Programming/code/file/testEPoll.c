@@ -36,7 +36,7 @@ int main (int argc, char *argv[]){
   int epfd;
   epfd = epoll_create1(0);
   if(epfd < 0){
-    perror("epool_create1:");
+    perror("epoll_create1:");
   }
   struct epoll_event events;
   struct epoll_event wait_events[MAX_EVENTS];
@@ -59,7 +59,7 @@ int main (int argc, char *argv[]){
   bool std_end_flag = true;
   int ret_epoll;
   while (std_end_flag){  
-	  ret_epoll = epoll_wait(epfd,&events,MAX_EVENTS,-1);
+	  ret_epoll = epoll_wait(epfd,wait_events,MAX_EVENTS,-1);
 	  if (ret_epoll == -1){
 	    perror("epoll_wait:");
 	    return 1;
