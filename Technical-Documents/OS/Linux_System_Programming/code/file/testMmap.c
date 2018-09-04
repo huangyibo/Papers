@@ -8,7 +8,7 @@
 int main(int argc, char *argv[]){
   ssize_t fd;
   fd = open("/home/os/Papers/Technical-Documents/OS/Linux_System_Programming/code/file/testInt",O_RDWR);
-  char* p = (char *)mmap(NULL,BUFFER_SIZE,PROT_READ | PROT_WRITE,MAP_SHARED,fd,0);
+  char *p = (char*)mmap(NULL,BUFFER_SIZE,PROT_READ | PROT_WRITE,MAP_SHARED,fd,0);
   for (int i = 0; i < BUFFER_SIZE; i++){
     printf("%c",(char) p[i]);
   }
