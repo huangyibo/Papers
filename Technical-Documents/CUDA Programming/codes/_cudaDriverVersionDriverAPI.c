@@ -1,3 +1,4 @@
+//gcc -o test -I/usr/local/cuda/include -L/usr/local/cuda/lib64 _cudaDriverVersionDriverAPI.c -lcuda
 #include <stdio.h>
 #include <cuda.h>
 
