@@ -1,0 +1,7 @@
+Linux内核有两本书：
+(1) Professional Linux Kernel Architecture
+	第3、4、5、13章可以好好读读
+	第6、7、8、9、16章略读
+(2) Understanding the Linux Kernel
+	读第2、8、9、16、18章
+	
