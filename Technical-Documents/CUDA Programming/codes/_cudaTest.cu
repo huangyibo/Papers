@@ -41,7 +41,6 @@ bool InitCUDA()
             if (prop.totalGlobalMem >= 1000) {
                 printDeviceProp(prop);
                 cudaSetDevice(i);
-                return 0;
             }
         }
     }
