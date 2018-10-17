@@ -1,4 +1,4 @@
-//nvcc -std=c++11 -o test -I/usr/local/cuda/samples/common/inc -I.  _cudaHadamard.cu -lcuda
+//nvcc -std=c++11 -o test -I/usr/local/cuda/samples/common/inc  _cudaHadamard.cu -lcuda
 #include <newton/newton.hpp>
 
 int main()
@@ -10,7 +10,7 @@ int main()
   newton::numeric_vector<float> A = a;
   newton::numeric_vector<float> B = b;
   newton::numeric_vector<float> C = c;
-  for (int i = 0 ; i < 100000000; i++){
+  for (int i = 0 ; i < 10000000; i++){
      C = A * B;
   }
   //C = A * B;
