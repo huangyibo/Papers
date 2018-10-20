@@ -1,4 +1,4 @@
-//gcc -o p2 -fPIE program2.c ./Lib.so
+//gcc -o p2 -fPIE program2.c Lib.so
 #include "Lib.h"
 
 int main(){
