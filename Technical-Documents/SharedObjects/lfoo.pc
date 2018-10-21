@@ -1,0 +1,10 @@
+fooroot=.
+includedir=${fooroot}
+libdir=${fooroot}
+
+Name: foo
+Description: The foo library
+Version: 1.0.0
+Libs: -L${libdir} -lfoo
+Cflags: -I${includedir}
+
