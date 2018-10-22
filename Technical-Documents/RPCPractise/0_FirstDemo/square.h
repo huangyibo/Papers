@@ -15,12 +15,12 @@ extern "C" {
 
 
 struct square_in {
-	long arg1;
+	double pass_in;
 };
 typedef struct square_in square_in;
 
 struct square_out {
-	long res1;
+	double return_out;
 };
 typedef struct square_out square_out;
 

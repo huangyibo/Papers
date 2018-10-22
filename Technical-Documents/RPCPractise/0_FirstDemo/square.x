@@ -1,9 +1,9 @@
 struct square_in {
-	long arg1;
+	double pass_in;
 };
 
 struct square_out {
-	long res1;
+	double return_out;
 };
 
 program SQUARE_PROG {

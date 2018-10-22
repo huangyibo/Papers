@@ -10,7 +10,7 @@ xdr_square_in (XDR *xdrs, square_in *objp)
 {
 	register int32_t *buf;
 
-	 if (!xdr_long (xdrs, &objp->arg1))
+	 if (!xdr_double (xdrs, &objp->pass_in))
 		 return FALSE;
 	return TRUE;
 }
@@ -20,7 +20,7 @@ xdr_square_out (XDR *xdrs, square_out *objp)
 {
 	register int32_t *buf;
 
-	 if (!xdr_long (xdrs, &objp->res1))
+	 if (!xdr_double (xdrs, &objp->return_out))
 		 return FALSE;
 	return TRUE;
 }
