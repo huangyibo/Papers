@@ -1,6 +1,5 @@
 ## **使用到的第三方开发Library**
 
-目前成功编译的Library有：
 * Boost https://www.boost.org/
 * Dlib http://dlib.net/   安装Dlib之前首先应该编译Boost
 * TensorFlow  https://www.tensorflow.org/
