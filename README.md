@@ -12,7 +12,7 @@
 * Big Graphs Anslytics Platform [Book]. Da Ya and Yuanyuan Tian. 该书详细的介绍了当前存在的针对大规模图数据的分析平台，设计与实现技术。 
 * Systems For Big Graph Analytics [Book]. Yuanyuan Tian. 与上篇文章作者相同，详细地讲述了当前存在的图分析平台的设计与实现技术。
 
-## **使用到的Library**
+## **使用到的第三方开发Library**
 
 目前成功编译的Library有：
 * Boost https://www.boost.org/
@@ -36,6 +36,8 @@
     * system call
     * glibc
     * C Compile
+* 库的编译与安装
+    * pkg-config 使用 https://people.freedesktop.org/~dbn/pkg-config-guide.html ，尤其要学会写.pc文件，并添加到环境变量中
 	
 ##  **数据库经典读物**
 
