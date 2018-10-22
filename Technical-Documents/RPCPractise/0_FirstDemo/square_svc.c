@@ -37,6 +37,12 @@ square_prog_1(struct svc_req *rqstp, register SVCXPRT *transp)
 		local = (char *(*)(char *, struct svc_req *)) squareproc_1_svc;
 		break;
 
+	case test:
+		_xdr_argument = (xdrproc_t) xdr_void;
+		_xdr_result = (xdrproc_t) xdr_square_out;
+		local = (char *(*)(char *, struct svc_req *)) test_1_svc;
+		break;
+
 	default:
 		svcerr_noproc (transp);
 		return;

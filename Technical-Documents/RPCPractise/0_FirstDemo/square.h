@@ -31,12 +31,18 @@ typedef struct square_out square_out;
 #define SQUAREPROC 1
 extern  square_out * squareproc_1(square_in *, CLIENT *);
 extern  square_out * squareproc_1_svc(square_in *, struct svc_req *);
+#define test 2
+extern  square_out * test_1(void *, CLIENT *);
+extern  square_out * test_1_svc(void *, struct svc_req *);
 extern int square_prog_1_freeresult (SVCXPRT *, xdrproc_t, caddr_t);
 
 #else /* K&R C */
 #define SQUAREPROC 1
 extern  square_out * squareproc_1();
 extern  square_out * squareproc_1_svc();
+#define test 2
+extern  square_out * test_1();
+extern  square_out * test_1_svc();
 extern int square_prog_1_freeresult ();
 #endif /* K&R C */
 
