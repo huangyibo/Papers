@@ -21,6 +21,7 @@
     * system call
     * glibc
     * C Compile
+    * GNU Makefile https://seisman.github.io/how-to-write-makefile/overview.html
 * 库的编译与安装
     * pkg-config 使用 https://people.freedesktop.org/~dbn/pkg-config-guide.html ，尤其要学会写.pc文件，并添加到环境变量中
 * RPC （Romote Procedure Calls） 远程过程调用
