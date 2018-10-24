@@ -15,3 +15,18 @@ square_out *test_1_svc(void * in, struct svc_req * rqstp){
         out.return_out = a;
         return (&out);
 }
+
+
+square_out *test1_2_svc(void * in, struct svc_req * rqstp){
+        static square_out out;
+        double a = 50.23;
+        out.return_out = a;
+        return (&out);
+}
+
+square_out *test2_2_svc(void * in, struct svc_req * rqstp){
+        static square_out out;
+        double a = 50.23;
+        out.return_out = a;
+        return (&out);
+}
