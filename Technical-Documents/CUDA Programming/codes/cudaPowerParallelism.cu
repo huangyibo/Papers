@@ -91,7 +91,9 @@ int main(){
       return 0;
     }  //从host的data中将DATA_SIZE个单元的数据复制到device的gpudata中，这是输入数据，需要从host中获取
     
-    sumOfSquares<<<1,THREAD_NUM,0>>>(gpudata,result,time);
+    dim3 grid(1,1,1);
+    dim3 block(THREAD_NUM,1,1);
+    sumOfSquares<<<grid,block,0>>>(gpudata,result,time);
     int sum_gpu[THREAD_NUM];  // 将GPU计算结果拷贝到该变量中
     clock_t used_time;
     cudaMemcpy(&sum_gpu, result, sizeof(int)*THREAD_NUM, cudaMemcpyDeviceToHost);   //将GPU中的result值拷贝到CPU的sum变量中
