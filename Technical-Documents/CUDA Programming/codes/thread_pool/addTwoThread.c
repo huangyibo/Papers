@@ -1,4 +1,4 @@
-//gcc -o test addMultiThread.c -L. -lthpool -lpthread
+//gcc -o test addTwoThread.c -L. -lthpool -lpthread
 #include "thpool.h"
 #include <stdio.h>
 #include <time.h>
@@ -59,7 +59,7 @@ int main(int argc, char* argv[]){
   arg2.c = c;
   arg2.num = N;
   //printf("%s\n",argv[1]); 
-  threadpool thpool = thpool_init(atoi(argv[1]));
+  threadpool thpool = thpool_init(atoi(argv[1]));  //argv[1]指定线程的个数
   clock_t start = clock();
   thpool_add_work(thpool, (void*)add1, (void*)&arg1);
   thpool_add_work(thpool, (void*)add2, (void*)&arg2);
