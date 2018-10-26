@@ -44,6 +44,7 @@ int main(int argc, char* argv[]){
   int a[N]; 
   int b[N];
   int c[N];
+  int d[N];   // for the single CPU
   for (int i = 0 ; i < N; i++){
     a[i] = -1*i;
     b[i] = i + i;
