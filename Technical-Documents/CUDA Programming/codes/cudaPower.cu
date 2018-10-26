@@ -106,6 +106,7 @@ int main(){
     clock_t end = clock()-start;
     printf("The CPU sum is %d.\n", sum_cpu);
     printf("The CPU time is %ld.\n",end);
+    cudaDeviceReset();
     return 0;
   }
 }
