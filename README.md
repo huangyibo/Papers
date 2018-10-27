@@ -27,4 +27,6 @@
 * RPC （Romote Procedure Calls） 远程过程调用
     * 安装`sudo apt-get install rpcbind`，用其提供portmap服务
     * RPC programming
-
+* 并行程序设计（Parallel Programming）
+    * pthread多核并行程序设计
+    * GPU数据并行程序设计
