@@ -42,5 +42,8 @@ ln -s libxxx.so.1.0.0 libxxx.so    建立符号链接，将其指向最新版本
 * Machine Learning 机器学习
     * 监督学习
     * 非监督学习
+* FPGA 现场可编程门阵列
+    * Zynq UltraScale+ MPSoC ZCU102
+    * Zynq UltraScale+ MPSoC ZCU104
 * Text Mining  文本挖掘
 * Deep Learing 深度学习
