@@ -79,7 +79,7 @@ int main(int argc, char* argv[]){
   thpool_add_work(thpool, (void*)add1, (void*)&arg1);
   thpool_add_work(thpool, (void*)add2, (void*)&arg2);
   thpool_add_work(thpool, (void*)add3, (void*)&arg3);
-  
+  thpool_wait(thpool);
   //printf("The number of thread: %d.\n",thpool_num_threads_working(thpool)); 
   thpool_destroy(thpool);
   //for (int i = 0 ; i < N; i++){

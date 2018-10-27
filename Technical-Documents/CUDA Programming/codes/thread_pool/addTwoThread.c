@@ -4,8 +4,10 @@
 #include <time.h>
 #include <stdlib.h>
 #include <string.h>
-#define N 666666
-
+//#define N 666666
+//#define N 100
+#define N 20
+//#define N 10
 /**
   * 多线程要传送的参数，必须要封装起来，在传递时将其封装成void* 类型
 */
@@ -21,6 +23,7 @@ void add1(void* args){
   struct arguments *args_thread = (struct arguments*)args;
   int tid = 0;
   while (tid < (args_thread->num)){
+    printf("线程1中tid:%d.\n",tid);
     (args_thread->c)[tid] = (args_thread->a)[tid] + (args_thread->b)[tid];
     tid += 2;
   }
@@ -31,6 +34,7 @@ void add2(void* args){
   struct arguments *args_thread = (struct arguments*)args;
   int tid = 1;
   while (tid < (args_thread->num)){
+    printf("线程2中tid:%d.\n",tid);
     (args_thread->c)[tid] = (args_thread->a)[tid] + (args_thread->b)[tid];
     tid += 2;
   }
@@ -44,7 +48,6 @@ int main(int argc, char* argv[]){
   int a[N]; 
   int b[N];
   int c[N];
-  int d[N];   // for the single CPU
   for (int i = 0 ; i < N; i++){
     a[i] = -1*i;
     b[i] = i + i;
@@ -61,23 +64,37 @@ int main(int argc, char* argv[]){
   arg2.num = N;
   //printf("%s\n",argv[1]); 
   threadpool thpool = thpool_init(atoi(argv[1]));  //argv[1]指定线程的个数
+  //threadpool thpool = thpool_init(2);
   clock_t start = clock();
+  //printf("The number of thread: %d.\n",thpool_num_threads_working(thpool));
   thpool_add_work(thpool, (void*)add1, (void*)&arg1);
   thpool_add_work(thpool, (void*)add2, (void*)&arg2);
+  thpool_wait(thpool);
+  clock_t end = clock() - start;
   //printf("The number of thread: %d.\n",thpool_num_threads_working(thpool)); 
   thpool_destroy(thpool);
-  //for (int i = 0 ; i < N; i++){
-    //printf("%d\t",c[i]);
-  //}
-  clock_t end = clock() - start;
+  int i = 0 ;
+  while (i < N){
+    printf("%d\n",c[i]);
+    i += 2;
+  }  //多线程打印出结果
+  i = 1;
+  while (i < N){
+    printf("%d\n",c[i]);
+    i += 2;
+  } 
+  //clock_t end = clock() - start;
   printf("The multi CPU is: %ld.\n",end);
   
   start = clock();
   for (int i = 0 ; i < N; i++){
     c[i] = a[i] + b[i];
-    //printf("%d\t",c[i]);
-  }
+  }  //单线程计算两个数组之和的时间
   end = clock() -start;
+  for (int i = 0 ; i < N; i++){
+    printf("%d\n",c[i]);
+  }   //单线程打印出结果
+
   printf("The single CPU is: %ld.\n",end);
 
   return 0;
