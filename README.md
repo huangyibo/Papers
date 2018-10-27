@@ -11,9 +11,14 @@
 ## **使用的技术**
 
 * RDMA Remote Direct Memory Access  远程内存直接访问
+    * IB-verbs
 * Graph Theory and Graph Database
+    * Properties Graph Databases
+    * RDF Graph Databases
 * storage techniques
     * NVMe SSD
+    * NFS
+    * DNFS
 * Linux System Programming
     * system call
     * glibc
@@ -30,8 +35,12 @@ ln -s libxxx.so.1.0.0 libxxx.so    建立符号链接，将其指向最新版本
     * 安装`sudo apt-get install rpcbind`，用其提供portmap服务
     * RPC programming
 * 并行程序设计（Parallel Programming）
-    * pthread多核并行程序设计
+    * pthread多核、共享内存并行程序设计
     * GPU数据并行程序设计
+    * MPI分布式内存并行程序设计
+    * openMP共享内存并行程序设计
 * Machine Learning 机器学习
     * 监督学习
     * 非监督学习
+* Text Mining  文本挖掘
+* Deep Learing 深度学习
