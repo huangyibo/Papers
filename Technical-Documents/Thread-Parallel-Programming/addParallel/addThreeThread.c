@@ -5,23 +5,23 @@
 #include <stdlib.h>
 #include <string.h>
 #define N 666666
-
+int c[N];    //全局数组
 /**
   * 多线程要传送的参数，必须要封装起来，在传递时将其封装成void* 类型
 */
 struct arguments{
+  int start;
   int* a;
   int* b;
-  int* c;
   int num;
 };
 
 //线程1
 void add1(void* args){
   struct arguments *args_thread = (struct arguments*)args;
-  int tid = 0;
+  int tid = args_thread->start;
   while (tid < (args_thread->num)){
-    (args_thread->c)[tid] = (args_thread->a)[tid] + (args_thread->b)[tid];
+    c[tid] = (args_thread->a)[tid] + (args_thread->b)[tid];
     tid += 3;
   }
 }
@@ -29,9 +29,9 @@ void add1(void* args){
 //线程2
 void add2(void* args){
   struct arguments *args_thread = (struct arguments*)args;
-  int tid = 1;
+  int tid = args_thread->start;
   while (tid < (args_thread->num)){
-    (args_thread->c)[tid] = (args_thread->a)[tid] + (args_thread->b)[tid];
+    c[tid] = (args_thread->a)[tid] + (args_thread->b)[tid];
     tid += 3;
   }
 }
@@ -39,9 +39,9 @@ void add2(void* args){
 //线程3
 void add3(void* args){
   struct arguments *args_thread = (struct arguments*)args;
-  int tid = 2;
+  int tid = args_thread->start;
   while (tid < (args_thread->num)){
-    (args_thread->c)[tid] = (args_thread->a)[tid] + (args_thread->b)[tid];
+    c[tid] = (args_thread->a)[tid] + (args_thread->b)[tid];
     tid += 3;
   }
 }
@@ -53,7 +53,6 @@ int main(int argc, char* argv[]){
   }
   int a[N]; 
   int b[N];
-  int c[N];
   for (int i = 0 ; i < N; i++){
     a[i] = -1*i;
     b[i] = i + i;
@@ -61,17 +60,17 @@ int main(int argc, char* argv[]){
   struct arguments arg1, arg2, arg3;  //分别指示三个线程的参数
   arg1.a = a;
   arg1.b = b;
-  arg1.c = c;
+  arg1.start = 0;
   arg1.num = N;
   
   arg2.a = a;
   arg2.b = b;
-  arg2.c = c;
+  arg2.start = 1;
   arg2.num = N;
   
   arg3.a = a;
   arg3.b = b;
-  arg3.c = c;
+  arg3.start = 2;
   arg3.num = N;
   //printf("%s\n",argv[1]); 
   threadpool thpool = thpool_init(atoi(argv[1]));  //argv[1]指定线程的个数
