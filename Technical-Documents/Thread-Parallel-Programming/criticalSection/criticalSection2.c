@@ -1,3 +1,11 @@
+/**
+  * 该程序也是错误的，会出现下述结果：
+  * sum = 40
+  * sub = 0
+  ***********************************
+  * sum = 39
+  * sub = 1
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
@@ -5,11 +13,12 @@
 
 int sum = 0;   //全局变量，由不同的应用程序调用可能会产生竞争，被称为临界区，也称为互斥量
 int sub = 40;
+
 void* add(void* tid){
   int id = (int)tid;
   pthread_mutex_t mutex;    //1. 申请mutex变量
   pthread_mutex_init(&mutex, NULL); //2. 初始化mutex变量，第二个参数恒定为NULL
-  printf("进入到线程%d.\n", id);
+  //printf("进入到线程%d.\n", id);
   pthread_mutex_lock(&mutex); //3. 在访问临界区时加锁
   sum += 1;    //临界区数据发生变化
   sub -= 1;

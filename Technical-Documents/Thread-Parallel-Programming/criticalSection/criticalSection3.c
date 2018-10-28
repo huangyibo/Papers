@@ -23,11 +23,11 @@ void* add(void* tid){
   pthread_mutex_t mutex;    //1. 申请mutex变量
   pthread_mutex_init(&mutex, NULL); //2. 初始化mutex变量，第二个参数恒定为NULL
   //printf("进入到线程%d.\n", id);
-  pthread_mutex_lock(&mutex); //3. 在访问临界区时加锁
+  //pthread_mutex_lock(&mutex); //3. 在访问临界区时加锁
   sum2 = sum1 - 200;    //临界区数据发生变化
   sum1 = sum1 - 200;
-  pthread_mutex_unlock(&mutex);   //4. 处理完临界区以后，释放锁
-  pthread_mutex_destroy(&mutex);  //5. 释放掉mutex变量，必须要完成以上五步，否则不会得到正确的计算结果  
+  //pthread_mutex_unlock(&mutex);   //4. 处理完临界区以后，释放锁
+  //pthread_mutex_destroy(&mutex);  //5. 释放掉mutex变量，必须要完成以上五步，否则不会得到正确的计算结果  
   return NULL;
 }
 
@@ -39,7 +39,7 @@ void* sub(void* tid){
   pthread_mutex_lock(&mutex); //3. 在访问临界区时加锁
   sum2 += 300;
   pthread_mutex_unlock(&mutex);   //4. 处理完临界区以后，释放锁
-  pthread_mutex_destroy(&mutex);  //5. 释放掉mutex变量，必须要完成以上五步，否则不会得到正确的计算结果  
+  //pthread_mutex_destroy(&mutex);  //5. 释放掉mutex变量，必须要完成以上五步，否则不会得到正确的计算结果  
   return NULL;
 
 }
