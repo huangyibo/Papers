@@ -1,11 +1,12 @@
 /**
   * 首先该段互斥程序能够正确的执行，使用命令gcc -o test criticalSection2.c -lpthread将该段代码编译，生成可执行文件test，接着运行./loop脚本即可在output中看到结果。
   * 正确的步骤如下：
-  * 1. 申请全局的互斥量pthread_t mutex
-  * 2. 在主线程（main函数）中初始化该互斥量 pthread_mutex_init(&mutex, NULL)
-  * 3. 在互斥量使用前使用 pthread_mutex_lock(&mutex)加锁
-  * 4. 使用完互斥量后释放锁 pthread_mutex_unlock(&mutex);
-  * 5. 在主线程（main函数）中销毁互斥量 pthread_mutex_destroy(&mutex)
+  * 0. 在头文件中包含#include <semaphore.h>，它没有被包含在pthread.h线程库中
+  * 1. 申请全局的信号量sem_t mutex
+  * 2. 在主线程（main函数）中初始化该信号量 sem_init(&mutex, 0, 1)，该函数第二个参数默认设置为0，第三个参数是信号量的初始值，设置为1，这样才能保证第一个线程能够进入临界区
+  * 3. 在访问临界区使用前使用 sem_wait(&mutex)，判断当前信号量是否为0，如果信号量为0，则等待，如果信号量不为0， 则减1进入临界区
+  * 4. 使用完信号量后释放 sem_post(&mutex); 信号量使用完后，使用sem_post将mutex的值加1，这样能够保证正在等待的线程被执行
+  * 5. 在主线程（main函数）中销毁信号量 sem_destroy(&mutex)
 */
 #include <stdio.h>
 #include <stdlib.h>
