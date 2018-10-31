@@ -12,44 +12,58 @@
 
 int sum1 = 1500;
 int sum2 = 500;
-pthread_mutex_t mutex;   //1. 申请全局互斥量，互斥量（或互斥锁）一定要是全局变量
+
+pthread_rwlock_t rwlock;    //1. 增加一把读写锁
+
 
 void* add(void* tid){
   //int id = (int)tid;
   //printf("进入到线程%d.\n", id);
-  pthread_mutex_lock(&mutex); //3. 在访问临界区时加锁
+  pthread_rwlock_wrlock(&rwlock); //3. 在访问临界区时加锁
   sum2 = sum1 - 200;    //临界区数据发生变化
   sum1 = sum1 - 200;
-  pthread_mutex_unlock(&mutex);   //4. 处理完临界区以后，释放锁
+  pthread_rwlock_unlock(&rwlock);   //4. 处理完临界区以后，释放锁
   return NULL;
 }
 
 void* sub(void* tid){
   //int id = (int)tid;
   //printf("进入到线程%d.\n", id);
-  pthread_mutex_lock(&mutex); //3. 在访问临界区时加锁
+  pthread_rwlock_wrlock(&rwlock); //3. 在访问临界区时加锁
   sum2 += 300;
-  pthread_mutex_unlock(&mutex);   //4. 处理完临界区以后，释放锁
+  pthread_rwlock_unlock(&rwlock);   //4. 处理完临界区以后，释放锁
   return NULL;
 
 }
 
 int main(){
-  pthread_mutex_init(&mutex, NULL); //2. 在主线程中初始化mutex变量，第二个参数恒定为NULL
+  pthread_rwlock_init(&rwlock, NULL); //2. 在主线程中初始化rwlock变量，第二个参数恒定为NULL
+  
   pthread_t* sumPthread;
   sumPthread = malloc(N*sizeof(pthread_t));
-  pthread_t subPthread;
+  pthread_t* subPthread;
+  subPthread = malloc(N*sizeof(pthread_t));
+  
   for (int i = 0; i < N; i++){
+    //pthread_rwlock_wrlock(&rwlock); //3. 在访问临界区时加锁
     pthread_create(&sumPthread[i], NULL, add, (void*)i);
+    //pthread_rwlock_wrlock(&rwlock);
   }
-  pthread_create(&subPthread, NULL, sub, (void*)1);
+  for (int i = 0; i < N; i++){
+    //pthread_rwlock_wrlock(&rwlock); //3. 在访问临界区时加锁
+    pthread_create(&subPthread[i], NULL, sub, (void*)i);
+    //pthread_rwlock_wrlock(&rwlock);
+  }
+
   for (int j = 0; j < N; j++){
     pthread_join(sumPthread[j],NULL);
+  }
+  for (int j = 0; j < N; j++){
+    pthread_join(subPthread[j],NULL);
   } 
-  pthread_join(subPthread,NULL);
-
+ 
   printf("sum1 = %d\n", sum1);
   printf("sum2 = %d\n", sum2);
-  pthread_mutex_destroy(&mutex);  //5. 释放掉mutex变量，必须要完成以上五步，否则不会得到正确的计算结果
+  pthread_rwlock_destroy(&rwlock);  //5. 释放掉rwlock变量，必须要完成以上五步，否则不会得到正确的计算结果
   return 0;
 }
