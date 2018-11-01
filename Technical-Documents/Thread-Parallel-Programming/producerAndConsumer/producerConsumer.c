@@ -6,8 +6,8 @@
 #define QUEUESIZE 10
 #define LOOP 20
 
-void *producer (void *args);
-void *consumer (void *args);
+void *producer (void *args); //线程调用标准格式，返回值从参数中获得
+void *consumer (void *args); //线程调用标准格式，返回值从参数中获得
 
 typedef struct {
 	int buf[QUEUESIZE];
@@ -116,6 +116,7 @@ typedef struct {
 	pthread_cond_t *notFull, *notEmpty;
 } queue;
 */
+
 queue *queueInit (void)
 {
 	queue *q;
