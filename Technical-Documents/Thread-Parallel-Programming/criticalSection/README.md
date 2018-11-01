@@ -8,7 +8,7 @@
 
 #### 2 代码说明
 1. criticalSection1.c 代码的执行结果是错误的，使用loop.sh脚本会执行非常多的次数会发现问题
-2. criticalSection1-1.c  代码要针对criticalSection1.c提出的问题，采用读写锁校正程序，使得程序能够正常运行
+2. criticalSection1-1.c  代码要针对criticalSection1.c提出的问题，采用读写锁校正程序，使得程序能够正常运行,(2018-11-01 读写锁未能正确地解决criticalSection1.c提出的问题，**暂时搁置**)
 3. criticalSection1-1-1.c  代码针对criticalSection1.c提出的问题，在add中维护一个只能自己访问的全局变量，并用信号量保护起来，当add的线程全部执行完之后，会激活sub函数的信号量，这个方法也被称为条件变量
 3. criticalSection2.c 代码采用pthread_mutex_t互斥量控制不同线程对临界区的访问，代码不存在任何问题
 4. criticalSection2-2.c 代码采用循环忙等待的方式解决临界区的访问出错问题，循环忙等待比互斥量存在的优势是：循环忙等待保证了线程的顺序。但是循环忙等待一直在轮训，浪费CPU资源
