@@ -13,16 +13,16 @@
 int sum1 = 1500;
 int sum2 = 500;
 
-pthread_rwlock_t rwlock;    //1. 增加一把读写锁
+pthread_rwlock_t rwlock;    //1. 创建全局读写锁，全局公共变量使得所有的线程都能够共同访问该变量
 
 
 void* add(void* tid){
   //int id = (int)tid;
   //printf("进入到线程%d.\n", id);
-  pthread_rwlock_wrlock(&rwlock); //3. 在访问临界区时加锁
+  pthread_rwlock_wrlock(&rwlock); //3. 在访问临界区时加写锁
   sum2 = sum1 - 200;    //临界区数据发生变化
   sum1 = sum1 - 200;
-  pthread_rwlock_unlock(&rwlock);   //4. 处理完临界区以后，释放锁
+  pthread_rwlock_unlock(&rwlock);   //4. 处理完临界区以后，释放写锁
   return NULL;
 }
 
@@ -33,7 +33,6 @@ void* sub(void* tid){
   sum2 += 300;
   pthread_rwlock_unlock(&rwlock);   //4. 处理完临界区以后，释放锁
   return NULL;
-
 }
 
 int main(){
@@ -47,20 +46,22 @@ int main(){
   for (int i = 0; i < N; i++){
     //pthread_rwlock_wrlock(&rwlock); //3. 在访问临界区时加锁
     pthread_create(&sumPthread[i], NULL, add, (void*)i);
-    //pthread_rwlock_wrlock(&rwlock);
-  }
-  for (int i = 0; i < N; i++){
-    //pthread_rwlock_wrlock(&rwlock); //3. 在访问临界区时加锁
     pthread_create(&subPthread[i], NULL, sub, (void*)i);
     //pthread_rwlock_wrlock(&rwlock);
   }
+  //for (int i = 0; i < N; i++){
+    //pthread_rwlock_wrlock(&rwlock); //3. 在访问临界区时加锁
+    //pthread_create(&subPthread[i], NULL, sub, (void*)i);
+    //pthread_rwlock_wrlock(&rwlock);
+  //}
 
   for (int j = 0; j < N; j++){
     pthread_join(sumPthread[j],NULL);
-  }
-  for (int j = 0; j < N; j++){
     pthread_join(subPthread[j],NULL);
-  } 
+  }
+  //for (int j = 0; j < N; j++){
+    //pthread_join(subPthread[j],NULL);
+  //} 
  
   printf("sum1 = %d\n", sum1);
   printf("sum2 = %d\n", sum2);
