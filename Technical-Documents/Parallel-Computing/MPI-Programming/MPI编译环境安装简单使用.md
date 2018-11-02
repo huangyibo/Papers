@@ -14,8 +14,8 @@
 
 #### 1.2 安装MPICH
 
-* 首先安装libnuma.so依赖工具  https://github.com/numactl/numactl
-* 接着编译安装MPICH https://www.mpich.org/downloads/
+* 首先安装libnuma.so依赖工具   https://github.com/numactl/numactl
+* 接着编译安装MPICH https://www.mpich.org/downloads/
 
 **说明:** 上面两个工具的安装全部按照Linux三段论来做：
 
@@ -40,8 +40,8 @@ int main( int argc, char *argv[] )
 }
 ```
 
-* 编译  `mpicc -o test helloMpi.c`
-* 运行  `mpirun -np 4 ./test`
+* 编译  `mpicc -o test helloMpi.c`
+* 运行  `mpirun -np 4 ./test`
 
 **注意：在mpirun时一定要在可执行文件test前加`./`**，否则会报错`Primary job  terminated normally, but 1 process returned a non-zero exit code. Per user-direction, the job has been aborted.` ， 提示job已经被放弃。
 
@@ -69,7 +69,7 @@ int main( int argc, char *argv[] )
 
 #### 2.2 配置步骤
 
-* 配置ssh免密码登录
+* 配置ssh免密码登录
 
 ```shell
 ssh graph-HP-Z8-G4-Workstation
@@ -114,7 +114,7 @@ scp ./authorized_keys lab@master:~/.ssh/authorized_keys
 scp ./authorized_keys lab@server:~/.ssh/authorized_keys
 ```
 
-* 检测每台MPI机子之间是否可以免密码登录
+* 检测每台MPI机子之间是否可以免密码登录
 
 ```shell
 ssh master
@@ -125,7 +125,7 @@ ssh server
 
 #### 2.3 测试
 
-* 创建文件
+* 创建文件
 
 在任意目录下执行下列命令:
 
@@ -202,7 +202,7 @@ master:4 #运行4个进程
 server:4 #运行4个进程
 ```
 
-* 编译并运行
+* 编译并运行
 
 ```shell
 mpicc -o test helloMpi.c   #编译后将可执行文件scp到其它的节点中
