@@ -1,10 +1,10 @@
-## <center>**单机与集群MPI编译环境安装与简单使用--MPICH**</center>
+## <center>**单机与集群MPI编译环境安装与简单使用--MPICH**</center>
 
-### **单机MPI环境配置及其测试**
+### 1 单机MPI环境配置及其测试
 
 单机环境下也能安装MPI，并进行相应的代码测试，本小节将给出安装及其测试细节。MPI实际上时通过gcc编译的，但是需要安装一些工具，如numa、openmpi等。
 
-#### **环境**
+#### 1.1 环境
 
 |项目   | 版本  |
 | ------------ | ------------ |
@@ -12,7 +12,7 @@
 |gcc   | gcc 5.4.0  |
 |内核版本|4.15.0-34-generic|
 
-#### **安装MPICH**
+#### 1.2 安装MPICH
 
 * 首先安装libnuma.so依赖工具  https://github.com/numactl/numactl
 * 接着编译安装MPICH https://www.mpich.org/downloads/
@@ -26,7 +26,7 @@ sudo make install -j 40
 sudo ldconfig     #记住，所有的共享链接库安装完成以后，都要执行该命令，使得共享库可以用
 ```
 
-#### **测试代码**
+#### 1.3 测试代码
 
 ```c
 //helloMpi.c
@@ -45,9 +45,9 @@ int main( int argc, char *argv[] )
 
 **注意：在mpirun时一定要在可执行文件test前加`./`**，否则会报错`Primary job  terminated normally, but 1 process returned a non-zero exit code. Per user-direction, the job has been aborted.` ， 提示job已经被放弃。
 
-### **集群MPI环境配置及其测试**
+### 2 集群MPI环境配置及其测试
 
-#### **环境**
+#### 2.1 环境
 
 |项目   | 版本  |
 | ------------ | ------------ |
@@ -55,7 +55,7 @@ int main( int argc, char *argv[] )
 |gcc   | gcc 5.4.0  |
 |内核版本|4.15.0-34-generic|
 
-建立三节点的MPI集群，并且在每个节点的`/etc/hosts`下添加如下信息：
+建立两个节点的MPI集群，并且在每个节点的`/etc/hosts`下添加如下信息：
 
 ```shell
 127.0.1.1       localhost    #**注意：**一定要有localhost，一定不能有127.0.0.1 master等这样的地址，如果报错，请参见参考文献2和参考文献3
@@ -67,7 +67,7 @@ int main( int argc, char *argv[] )
 
 配置成功后，请在不同的机器上检查，是否能够成功的ping通每一台机子，所有的分布式环境都需要这样搞，比如`hadoop`集群。
 
-#### **配置步骤**
+#### 2.2 配置步骤
 
 * 配置ssh免密码登录
 
@@ -121,9 +121,9 @@ ssh master
 ssh server
 ```
 
-* 在每台MPI机子上安装MPICH
+* 在每台MPI机子上安装MPICH，编译安装MPICH https://www.mpich.org/downloads/
 
-#### **测试**
+#### 2.3 测试
 
 * 创建文件
 
@@ -211,7 +211,7 @@ mpiexec -f ./hosts -np 8 ./test   #如果回写的结果中既有server�
 
 ![](https://github.com/JunpengCode/Papers/blob/master/Technical-Documents/Parallel-Computing/MPI-Programming/images/mpi-cluster.png)
 
-#### **参考资料**
+### 3 参考资料
 
 1. http://cugxuan.coding.me/2017/11/17/Openmpi/openmpi%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/
 2. https://stackoverflow.com/questions/36577630/mpi-communication-error-with-rank-1-connection-refused
