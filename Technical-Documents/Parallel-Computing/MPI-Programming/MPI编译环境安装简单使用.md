@@ -209,7 +209,15 @@ mpiexec -f ./hosts -np 8 ./test   #如果回写的结果中既有server�
 
 ![](https://github.com/JunpengCode/Papers/blob/master/Technical-Documents/Parallel-Computing/MPI-Programming/images/mpi-cluster.png)
 
-### 3 参考资料
+### 3 MPICH-Infiniband网络支持支持
+
+源码包下载： http://mvapich.cse.ohio-state.edu/overview/ ，其它步骤和上述一致，只有两步有区别：
+
+```shell
+./configure --prefix=/usr/local --with-cma   #编译时指定
+mpirun_rsh -np 8 -hostfile hosts MV2_SMP_USE_CMA=0 ./test   #运行指令，https://www.openfabrics.org/images/eventpresos/workshops2014/IBUG/presos/Wednesday/PDF/01_MVAPICH2_over_IB.pdf
+```
+### 4 参考资料
 
 1. http://cugxuan.coding.me/2017/11/17/Openmpi/openmpi%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/
 2. https://stackoverflow.com/questions/36577630/mpi-communication-error-with-rank-1-connection-refused
