@@ -7,10 +7,11 @@
 
 #### 1.1 环境
 
-项目   | 版本  
------------- | ------------ 
-操作系统   | Ubuntu 16.04.4 
-gcc   | gcc 5.4.0  
+
+项目| 版本  
+------------|------------ 
+操作系统|Ubuntu 16.04.4 
+gcc|gcc 5.4.0  
 内核版本|4.15.0-34-generic
 
 #### 1.2 安装MPICH
@@ -50,10 +51,10 @@ int main( int argc, char *argv[] )
 
 #### 2.1 环境
 
-项目   | 版本  
- ------------ | ------------ 
-操作系统   | Ubuntu 16.04.4 
-gcc   | gcc 5.4.0  
+项目| 版本  
+------------|------------ 
+操作系统|Ubuntu 16.04.4 
+gcc|gcc 5.4.0  
 内核版本|4.15.0-34-generic
 
 建立三节点的MPI集群，并且在每个节点的`/etc/hosts`下添加如下信息：
@@ -124,7 +125,7 @@ LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 
 #### 2.3 测试
 
-* 在集群中某个节点上创建文件
+* 在集群中某个节点上创建文件
 
 在任意目录下执行下列命令:
 
@@ -208,7 +209,7 @@ mpicc -o test helloMpi.c   #编译后将可执行文件使用scp命令传�
 mpiexec -f ./hosts -np 8 ./test   #如果回写的结果中既有server，又有master，说明整个配置过程是正确的
 ```
 
-![](index_files/87851081-ad9c-4e2c-8a0f-a4fca7b0a6f7.png)
+![](https://github.com/JunpengCode/Papers/blob/master/Technical-Documents/Parallel-Computing/MPI-Programming/images/mpi-cluster.png)
 
 ### 3 参考资料
 
