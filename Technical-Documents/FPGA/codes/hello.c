@@ -2,6 +2,6 @@
 #include <stdio.h>
 
 int main(){
-  printf("Hwllo,XILINX! ECNU Storage Lab!\n");
+  printf("Hello,XILINX! ECNU Storage Lab!\n");
   return 0;
 }
