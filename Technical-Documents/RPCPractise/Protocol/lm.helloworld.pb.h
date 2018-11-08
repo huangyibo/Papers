@@ -153,21 +153,6 @@ class helloworld : public ::google::protobuf::Message /* @@protoc_insertion_poin
 
   // accessors -------------------------------------------------------
 
-  // required string id = 1;
-  bool has_id() const;
-  void clear_id();
-  static const int kIdFieldNumber = 1;
-  const ::std::string& id() const;
-  void set_id(const ::std::string& value);
-  #if LANG_CXX11
-  void set_id(::std::string&& value);
-  #endif
-  void set_id(const char* value);
-  void set_id(const char* value, size_t size);
-  ::std::string* mutable_id();
-  ::std::string* release_id();
-  void set_allocated_id(::std::string* id);
-
   // required string str = 2;
   bool has_str() const;
   void clear_str();
@@ -182,6 +167,13 @@ class helloworld : public ::google::protobuf::Message /* @@protoc_insertion_poin
   ::std::string* mutable_str();
   ::std::string* release_str();
   void set_allocated_str(::std::string* str);
+
+  // required int32 id = 1;
+  bool has_id() const;
+  void clear_id();
+  static const int kIdFieldNumber = 1;
+  ::google::protobuf::int32 id() const;
+  void set_id(::google::protobuf::int32 value);
 
   // optional int32 opt = 3;
   bool has_opt() const;
@@ -205,8 +197,8 @@ class helloworld : public ::google::protobuf::Message /* @@protoc_insertion_poin
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::HasBits<1> _has_bits_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
-  ::google::protobuf::internal::ArenaStringPtr id_;
   ::google::protobuf::internal::ArenaStringPtr str_;
+  ::google::protobuf::int32 id_;
   ::google::protobuf::int32 opt_;
   friend struct ::protobuf_lm_2ehelloworld_2eproto::TableStruct;
 };
@@ -221,81 +213,39 @@ class helloworld : public ::google::protobuf::Message /* @@protoc_insertion_poin
 #endif  // __GNUC__
 // helloworld
 
-// required string id = 1;
+// required int32 id = 1;
 inline bool helloworld::has_id() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
+  return (_has_bits_[0] & 0x00000002u) != 0;
 }
 inline void helloworld::set_has_id() {
-  _has_bits_[0] |= 0x00000001u;
+  _has_bits_[0] |= 0x00000002u;
 }
 inline void helloworld::clear_has_id() {
-  _has_bits_[0] &= ~0x00000001u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline void helloworld::clear_id() {
-  id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  id_ = 0;
   clear_has_id();
 }
-inline const ::std::string& helloworld::id() const {
+inline ::google::protobuf::int32 helloworld::id() const {
   // @@protoc_insertion_point(field_get:lm.helloworld.id)
-  return id_.GetNoArena();
+  return id_;
 }
-inline void helloworld::set_id(const ::std::string& value) {
+inline void helloworld::set_id(::google::protobuf::int32 value) {
   set_has_id();
-  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  id_ = value;
   // @@protoc_insertion_point(field_set:lm.helloworld.id)
-}
-#if LANG_CXX11
-inline void helloworld::set_id(::std::string&& value) {
-  set_has_id();
-  id_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:lm.helloworld.id)
-}
-#endif
-inline void helloworld::set_id(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  set_has_id();
-  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:lm.helloworld.id)
-}
-inline void helloworld::set_id(const char* value, size_t size) {
-  set_has_id();
-  id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:lm.helloworld.id)
-}
-inline ::std::string* helloworld::mutable_id() {
-  set_has_id();
-  // @@protoc_insertion_point(field_mutable:lm.helloworld.id)
-  return id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* helloworld::release_id() {
-  // @@protoc_insertion_point(field_release:lm.helloworld.id)
-  if (!has_id()) {
-    return NULL;
-  }
-  clear_has_id();
-  return id_.ReleaseNonDefaultNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void helloworld::set_allocated_id(::std::string* id) {
-  if (id != NULL) {
-    set_has_id();
-  } else {
-    clear_has_id();
-  }
-  id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), id);
-  // @@protoc_insertion_point(field_set_allocated:lm.helloworld.id)
 }
 
 // required string str = 2;
 inline bool helloworld::has_str() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
+  return (_has_bits_[0] & 0x00000001u) != 0;
 }
 inline void helloworld::set_has_str() {
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000001u;
 }
 inline void helloworld::clear_has_str() {
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000001u;
 }
 inline void helloworld::clear_str() {
   str_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
