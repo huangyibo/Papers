@@ -1,11 +1,12 @@
 ## **使用到的第三方开发Library**
 
-* Boost https://www.boost.org/
-* Dlib http://dlib.net/   安装Dlib之前首先应该编译Boost
+* Boost https://www.boost.org/   （C++语言增强库）
+* Dlib http://dlib.net/   安装Dlib之前首先应该编译Boost，机器学习库
 * TensorFlow  https://www.tensorflow.org/
-* igraph http://igraph.org/
-* libpqxx https://github.com/jtv/libpqxx
-* json-c https://github.com/json-c/json-c
+* igraph http://igraph.org/ （图API）
+* libpqxx https://github.com/jtv/libpqxx   （C语言连接PostgreSQL数据库）
+* json-c https://github.com/json-c/json-c     将数据封装为JSON格式（C语言）
+* Google Protocol Buffer https://github.com/protocolbuffers/protobuf/releases   结构化数据序列化工具
 
 
 ## **使用的技术**
