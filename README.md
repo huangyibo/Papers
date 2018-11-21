@@ -46,8 +46,8 @@
     * 监督学习
     * 非监督学习
 * FPGA 现场可编程门阵列
-    * Zynq UltraScale+ MPSoC ZCU102 （20000元）
-    * Zynq UltraScale+ MPSoC ZCU104 （8000元）
+    * Zynq UltraScale+ MPSoC ZCU102 （20000RMB）
+    * Zynq UltraScale+ MPSoC ZCU104 （8000RMB）
     * verilog
     * C语言交叉编译技术
 * Text Mining  文本挖掘
