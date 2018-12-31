@@ -7,7 +7,7 @@
 * libpqxx https://github.com/jtv/libpqxx   （C语言连接PostgreSQL数据库）
 * json-c https://github.com/json-c/json-c     将数据封装为JSON格式（C语言）
 * Google Protocol Buffer https://github.com/protocolbuffers/protobuf/releases   结构化数据序列化工具
-* word2vec https://arxiv.org/pdf/1310.4546.pdf  https://code.google.com/archive/p/word2vec/
+* word2vec https://arxiv.org/pdf/1310.4546.pdf  https://code.google.com/archive/p/word2vec/  https://rare-technologies.com/word2vec-tutorial/#app
 
 
 ## **使用的技术**
